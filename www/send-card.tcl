@@ -39,6 +39,7 @@ db_transaction {
 
 } on_error { # most likely a double click
     ad_returnredirect "."
+    # continue here to send mail!
 }
 
 
