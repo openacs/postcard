@@ -20,9 +20,7 @@ if ![db_0or1row select_card_id {
     select card_id, card_picture as image_id, recipient, sender, message, picked_up
     from postcards
     where pickup_code = :pickup_code
-}] { 
-    ns_log NOTICE "\n\n\n*****\n**** houston we have a problem"
-}
+}] {}
 
 
 # Set picked_up date

@@ -58,7 +58,7 @@ db_transaction {
 	set image = [set __lob_id [db_string get_lob_id "select empty_lob()"]]
 	where card_image_id = :image_id
     } -blob_files [list $tmp_filename]
-}
+} on_error {}
 
 ad_returnredirect "."
 
