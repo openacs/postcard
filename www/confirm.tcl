@@ -25,7 +25,5 @@ ad_page_contract {
 # Insert a new postcard in the database, set card_id to the card id value
 ad_require_permission [ad_conn package_id] "postcard_create_card"
 
-set exported_vars [export_form_vars [list sender card_id recipient subject message card_id]]
-
 ad_return_template
 
