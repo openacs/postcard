@@ -9,7 +9,6 @@ ad_page_contract {
 } {
   card_id:integer,notnull
   image_id:integer,notnull
-  sender:notnull
   recipient:notnull
   subject:notnull
   message:notnull
@@ -24,6 +23,8 @@ ad_page_contract {
 
 # Insert a new postcard in the database, set card_id to the card id value
 ad_require_permission [ad_conn package_id] "postcard_create_card"
+ad_get_user_info
+set sender $email
 
 ad_return_template
 

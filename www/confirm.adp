@@ -8,7 +8,6 @@
 <form action=send-card method=post>
 <%= [export_form_vars image_id] %>
 <%= [export_form_vars recipient] %>
-<%= [export_form_vars sender] %>
 <%= [export_form_vars subject] %>
 <%= [export_form_vars message] %>
 <%= [export_form_vars card_id] %>
@@ -22,7 +21,7 @@
   </tr>
   <tr>
      <td align=right>
-     From: @sender@
+     From: @email@
      </td>
   </tr>
   <tr>

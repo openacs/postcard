@@ -18,13 +18,6 @@ Write your message below
   </tr>
   <tr>
      <td align=right>
-     From: (email address)
-     <td>
-     <input type=text name=sender>
-     </td>
-  </tr>
-  <tr>
-     <td align=right>
      Subject
      <td>
      <input type=text name=subject>

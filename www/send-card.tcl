@@ -9,7 +9,6 @@ ad_page_contract {
 } {
   card_id:integer,notnull
   image_id:integer,notnull
-  sender:notnull
   recipient:notnull
   subject:notnull
   message:notnull
@@ -22,6 +21,10 @@ ad_page_contract {
 ad_require_permission [ad_conn package_id] "postcard_create_card"
 
 set pickup_code [ns_crypt $card_id foobar]
+
+# Don't take the email from the poster. Pull it out of the db instead.
+ad_get_user_info
+set sender $email
 
 db_transaction {
 
@@ -51,7 +54,7 @@ if { [string compare [string tolower [ns_config ns/parameters DefaultCharset ""]
 }
 
 set message  "
-You have received a postcard from $sender.
+You have received a postcard from $first_names $last_name ($sender).
 
 You may go to $url to pick up your card!
 
