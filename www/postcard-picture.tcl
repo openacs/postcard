@@ -10,6 +10,8 @@ ad_page_contract {
     {image_id:integer,notnull}
 } 
 
+# DRB: Someday this should be rewritten to use the content repository
+# and its cr_write_content proc.
 
 ReturnHeaders [db_string mime_type {
   select mime_type
