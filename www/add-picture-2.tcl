@@ -56,7 +56,8 @@ db_transaction {
 	set image = [set __lob_id [db_string get_lob_id "select empty_lob()"]]
 	where card_image_id = :image_id
     } -blob_files [list $tmp_filename]
-} on_error {} # hopefully its a double click...
+} on_error {} 
+# hopefully its a double click since we ignore errors (questionable behavior should be fixed).
 
 ad_returnredirect "."
 
