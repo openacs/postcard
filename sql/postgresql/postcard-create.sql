@@ -122,7 +122,7 @@ create table postcard_images (
   lob         integer references lobs,
   mime_type     varchar(100),
   title         varchar(1000),
-  description   varchar(4000)
+  description   text
 );
 
 -- to enable pg lob support see kernel/sql/postgresql/lobs.sql
@@ -134,7 +134,7 @@ create table postcards (
   card_picture integer references postcard_images,
   recipient    varchar(1000),
   sender       varchar(1000),
-  message      varchar(4000),
+  message      text,
   pickup_code  varchar(1000),
   picked_up    date 
 ); 
