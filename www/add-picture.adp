@@ -5,18 +5,18 @@
 
 <center>
 <form enctype=multipart/form-data method=POST action=add-picture-2>
-Add a picture<br>
-<table border=1>
+<h3>Add a picture</h3>
+<table border="0" cellpadding="2" cellspacing="2">
  <tr>
-  <td>Select Image</td>
+  <th>Select Image</th>
   <td><input type=file name=upload_file size=20></td>
  </tr>
  <tr>
-  <td>Title</td>
+  <th>Title</th>
   <td><input type=text name=title size=30></td>
  </tr>
  <tr>
-  <td>Description</td>
+  <th>Description</th>
   <td><textarea name=description rows=5 cols=40></textarea></td>
  </tr>
 

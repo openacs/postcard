@@ -2,45 +2,33 @@
 <property name="title">Confirm</property>
 <property name="context">confirm</property>
 
-<h1>Confirm Your Message</h1>
-<p>
-<center>
-<img src=postcard-picture?image_id=@image_id@>
-<p>
-<form action=send-card method=post>
-<%= [export_form_vars image_id] %>
-<%= [export_form_vars recipient] %>
-<%= [export_form_vars subject] %>
-<%= [export_form_vars message] %>
-<%= [export_form_vars card_id] %>
+  <h1>Confirm Your Message</h1>
+  <p />
+  <center>
+    <img src=postcard-picture?image_id=@image_id@ />
+      <p />
+      <form action=send-card method=post>
+        @export_vars;noquote@
 
-
-<table>
-  <tr>
-     <td align=right>
-     To: @recipient@
-     </td>
-  </tr>
-  <tr>
-     <td align=right>
-     From: @email@
-     </td>
-  </tr>
-  <tr>
-     <td align=right>
-     Subject: @subject@
-     </td>
-  </tr>
-  <tr>
-     <td colspan=2>
-     Message:<br>
-	    <%
-	    regsub -all "\n" $message "<br>" formatted_message
-	    adp_puts $formatted_message
-	    %>
-     </td>
-  </tr>
-</table>
-<input type=submit value=OK>
-</form>
-</center>
+        <table>
+          <tr>
+            <th align=right>To:</th>
+            <td>@recipient@</td>
+          </tr>
+          <tr>
+            <th align=right>From:</th>
+            <td>@email@</td>
+          </tr>
+          <tr>
+            <th align=right>Subject:</th>
+            <td>@subject@</td>
+          </tr>
+          <tr>
+            <th>Message:</th>
+            <td>@formatted_message;noquote@</td>
+            </td>
+          </tr>
+        </table>
+        <input type=submit value=OK>
+      </form>
+  </center>
