@@ -31,7 +31,6 @@ adaptation of henry minsky's postcard tutorial application.</description>
             <file type="query_file" db_type="oracle" path="www/add-picture-2-oracle.xql"/>
             <file type="query_file" db_type="postgresql" path="www/add-picture-2-postgresql.xql"/>
             <file type="tcl_util" path="www/add-picture-2.tcl"/>
-            <file type="query_file" db_type="postgresql" path="www/add-picture-postgresql.xql"/>
             <file path="www/add-picture.adp"/>
             <file type="tcl_util" path="www/add-picture.tcl"/>
             <file path="www/confirm.adp"/>
