@@ -21,7 +21,21 @@ ad_page_contract {
   message:onevalue
 }
 
+set user_id    [ad_conn user_id]
+set package_id [ad_conn package_id]
+
+permission::require_permission \
+    -party_id $user_id \
+    -privilege create \
+    -object_id $package_id
+
+set export_vars [export_vars -form {image_id recipient subject message card_id}]
+
 # Insert a new postcard in the database, set card_id to the card id value
-ad_require_permission [ad_conn package_id] "postcard_create_card"
 ad_get_user_info
 set sender $email
+
+
+set formatted_message $message
+regsub -all "\n" $message "<br>" formatted_message
+

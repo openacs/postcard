@@ -9,7 +9,13 @@ ad_page_contract {
 } {
 }
 
-ad_require_permission [ad_conn package_id] "postcard_create_image"
+set user_id    [ad_conn user_id]
+set package_id [ad_conn package_id]
+
+permission::require_permission \
+    -party_id $user_id \
+    -privilege admin \
+    -object_id $package_id
 
 set image_id [db_nextval postcard_image_sequence] 
 

@@ -9,11 +9,18 @@ ad_page_contract {
 } {
     image_id:integer,notnull
 } -properties {
-  image_id:onevalue
-  image_value:onevalue
+    image_id:onevalue
+    image_value:onevalue
 }
 
-ad_require_permission [ad_conn package_id] "postcard_create_card"
+set user_id    [ad_conn user_id]
+set package_id [ad_conn package_id]
+
+permission::require_permission \
+    -party_id $user_id \
+    -privilege create \
+    -object_id $package_id
 
 set card_id [db_nextval postcard_sequence]
 
+set export_vars [export_vars -form {image_id card_id}]

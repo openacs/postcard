@@ -18,7 +18,13 @@ ad_page_contract {
   url:onevalue
 }
 
-ad_require_permission [ad_conn package_id] "postcard_create_card"
+set user_id    [ad_conn user_id]
+set package_id [ad_conn package_id]
+
+permission::require_permission \
+    -party_id $user_id \
+    -privilege create \
+    -object_id $package_id
 
 set pickup_code [ns_crypt $card_id foobar]
 
@@ -57,10 +63,13 @@ if { [string compare [string tolower [ns_config ns/parameters DefaultCharset ""]
 set message  "
 You have received a postcard from $first_names $last_name ($sender).
 
-You may go to $url to pick up your card!
+You may go to $url to pick up your card!"
 
-"
-ns_sendmail $recipient $sender $subject $message
+acs_mail_lite::send \
+    -to_addr $recipient \
+    -from_addr $sender \
+    -subject $subject \
+    -body $message
 
 
 

@@ -7,8 +7,7 @@ Write your message below
 <img src=postcard-picture?image_id=@image_id@> 
 <p>
 <form action=confirm method=post>
-<%= [export_form_vars image_id] %>
-<%= [export_form_vars card_id] %>
+@export_vars;noquote@
 
 <table>
   <tr>

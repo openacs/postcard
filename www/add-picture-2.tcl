@@ -13,9 +13,13 @@ ad_page_contract {
     {description:notnull}
 }
 
-set user_id [ad_verify_and_get_user_id]
+set user_id    [ad_conn user_id]
+set package_id [ad_conn package_id]
 
-ad_require_permission [ad_conn package_id] "postcard_create_image"
+permission::require_permission \
+    -party_id $user_id \
+    -privilege admin \
+    -object_id $package_id
 
 set tmp_filename [ns_queryget upload_file.tmpfile]
 
