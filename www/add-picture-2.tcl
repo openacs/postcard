@@ -21,8 +21,6 @@ set tmp_filename [ns_queryget upload_file.tmpfile]
 
 set file_extension [string tolower [file extension $upload_file]]
 
-set file_size [file size $tmp_filename]
-
 # remove the first . from the file extension
 regsub "\." $file_extension "" file_extension
 
@@ -58,7 +56,7 @@ db_transaction {
 	set image = [set __lob_id [db_string get_lob_id "select empty_lob()"]]
 	where card_image_id = :image_id
     } -blob_files [list $tmp_filename]
-} on_error {}
+} on_error {} # hopefully its a double click...
 
 ad_returnredirect "."
 
