@@ -1,4 +1,6 @@
 <master>
+<property name="title">Confirm</property>
+<property name="context">confirm</property>
 
 <h1>Confirm Your Message</h1>
 <p>

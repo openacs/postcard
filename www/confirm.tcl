@@ -25,6 +25,3 @@ ad_page_contract {
 ad_require_permission [ad_conn package_id] "postcard_create_card"
 ad_get_user_info
 set sender $email
-
-ad_return_template
-

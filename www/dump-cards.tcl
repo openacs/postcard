@@ -15,5 +15,3 @@ db_multirow cards cards {
     from postcards
     order by card_id
 }
-
-ad_return_template

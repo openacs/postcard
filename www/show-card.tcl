@@ -31,5 +31,3 @@ if [empty_string_p $picked_up] {
 	where pickup_code = :pickup_code
     }
 }
-
-ad_return_template

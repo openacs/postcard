@@ -17,4 +17,3 @@ ad_require_permission [ad_conn package_id] "postcard_create_card"
 
 set card_id [db_nextval postcard_sequence]
 
-ad_return_template

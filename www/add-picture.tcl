@@ -13,7 +13,4 @@ ad_require_permission [ad_conn package_id] "postcard_create_image"
 
 set image_id [db_nextval postcard_image_sequence] 
 
-ad_return_template
-
-
 

@@ -52,7 +52,5 @@ foreach card $cards {
 # attribute
 # getElementsByTagName
 
-
-
 doc_return 200 text/html  $page_content
 

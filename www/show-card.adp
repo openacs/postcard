@@ -1,4 +1,6 @@
 <master>
+<property name="title">Show a card</property>
+<property name="context">"show card"</property>
 
 <img src=postcard-picture?image_id=@image_id@>
 <table>

@@ -1,5 +1,8 @@
 <master>
 
+<property name="title">Upload a Photo</property>
+<property name="context">"upload photo"</property>
+
 <center>
 <form enctype=multipart/form-data method=POST action=add-picture-2>
 Add a picture<br>
@@ -19,7 +22,7 @@ Add a picture<br>
 
  <input type=hidden name=image_id value="@image_id@">
 </table>
-<input type=submit>
+<input type=submit value="Upload">
 </form>
 </center>
 

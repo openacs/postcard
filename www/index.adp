@@ -1,4 +1,6 @@
 <master>
+<property name="title">Send a card</property>
+<property name="context">"Send a card"</property>
 
 @message@
 
@@ -35,4 +37,4 @@
 </table>
 
 <p>
-<a href="add-picture"> Add a picture</a><br>
+<a href="add-picture">Add a picture</a><br>

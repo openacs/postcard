@@ -19,5 +19,3 @@ db_multirow images get_all_images {
 }
 
 set message "Select image and send a Card"
-
-ad_return_template

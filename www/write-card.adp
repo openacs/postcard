@@ -1,4 +1,6 @@
 <master>
+<property name="title">Write a card</property>
+<property name="context">"write a card"</property>
 
 Write your message below
 <center>

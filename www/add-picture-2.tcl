@@ -59,7 +59,7 @@ db_transaction {
 } on_error {} 
 # hopefully its a double click since we ignore errors (questionable behavior should be fixed).
 
-ad_returnredirect "."
+ad_returnredirect "./"
 
 
 

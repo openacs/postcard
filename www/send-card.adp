@@ -1,4 +1,6 @@
 <master>
+<property name="title">Card sent</property>
+<property name="context">"card sent"</property>
 
 <p>
 
@@ -7,7 +9,7 @@ Your card has been sent to @recipient@!
 <p>
 
 You may go to <a href="@url@">@url@</a>
-to pick up your card!
+to see the card you sent!
 
 <p>
 
