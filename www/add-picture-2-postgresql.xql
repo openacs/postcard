@@ -2,15 +2,24 @@
 
 <queryset>
    <rdbms><type>postgresql</type><version>7.1</version></rdbms>
-
+ 
 <fullquery name="add_picture">      
       <querytext>
-    insert into postcard_images (card_image_id, image, mime_type, title, description)
-    values (postcard_image_seq.nextval,
-        [set __lob_id [db_string get_id "select empty_lob()"]],
-        :mime_type, :title, :description)
+
+	insert into postcard_images (card_image_id, mime_type,
+	title,	description)
+	values (:image_id,  :mime_type, :title, :description )
+
       </querytext>
 </fullquery>
 
- 
-</queryset>
+<fullquery name="upload_picture">      
+    <querytext>
+
+    update postcard_images
+    set lob = [set __lob_id [db_string get_lob_id "select empty_lob()"]]
+    where card_image_id = :image_id
+
+    </querytext>
+</fullquery>
+ </queryset>

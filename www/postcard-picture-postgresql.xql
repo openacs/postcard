@@ -3,13 +3,11 @@
 <queryset>
    <rdbms><type>postgresql</type><version>7.1</version></rdbms>
 
-<fullquery name="select_image">      
+<fullquery name="retrieve_image">      
       <querytext>
---      FIX ME LOB
-        select image
+        select lob
         from postcard_images
-        where card_image_id = $image_id
-
+        where card_image_id = :image_id
       </querytext>
 </fullquery>
 

@@ -7,7 +7,7 @@
       <querytext>
       
 	update postcards
-	set picked_up = current_time
+	set picked_up = now()
 	where pickup_code = :pickup_code
     
       </querytext>

@@ -11,6 +11,8 @@
 <%= [export_form_vars sender] %>
 <%= [export_form_vars subject] %>
 <%= [export_form_vars message] %>
+<%= [export_form_vars card_id] %>
+
 
 <table>
   <tr>

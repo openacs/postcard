@@ -8,18 +8,24 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     upload_file
+    {image_id:integer,notnull}
     {title:notnull}
     {description:notnull}
 }
 
-set user_id [ad_conn user_id]
+set user_id [ad_verify_and_get_user_id]
+
+ad_require_permission [ad_conn package_id] "postcard_create_image"
+
 set tmp_filename [ns_queryget upload_file.tmpfile]
-ad_require_permission [ad_conn package_id] admin
 
 set file_extension [string tolower [file extension $upload_file]]
 
+set file_size [file size $tmp_filename]
+
 # remove the first . from the file extension
 regsub "\." $file_extension "" file_extension
+
 
 set what_aolserver_told_us ""
 if { $file_extension == "jpeg" || $file_extension == "jpg" } {
@@ -37,11 +43,24 @@ if { ![empty_string_p $what_aolserver_told_us] && [lindex $what_aolserver_told_u
     set original_width ""
     set original_height ""
 }
+ 
+db_transaction {
 
-db_dml add_picture {
-    insert into postcard_images (card_image_id, image, mime_type, title, description)
-    values (postcard_image_seq.nextval, empty_blob(), :mime_type, :title, :description)
-    returning image into :1
-} -blob_files [list $tmp_filename]
+    db_dml add_picture {
+	insert into postcard_images (card_image_id, mime_type,
+	       title,	description)
+	values (:image_id, 
+	       :mime_type, :title, :description )
+    } -blob_files [list $tmp_filename]
+
+    db_dml upload_picture {
+	update postcard_images
+	set image = [set __lob_id [db_string get_lob_id "select empty_lob()"]]
+	where card_image_id = :image_id
+    } -blob_files [list $tmp_filename]
+}
 
 ad_returnredirect "."
+
+
+

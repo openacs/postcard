@@ -7,7 +7,7 @@ ad_page_contract {
     @creation-date 6 Nov 2000
     @cvs-id $Id$
 } {
-    {image_id:notnull}
+    {image_id:integer,notnull}
 } 
 
 
@@ -16,10 +16,11 @@ ReturnHeaders [db_string mime_type {
     from postcard_images
    where card_image_id = :image_id}]
 
-db_write_blob select_image "
-select image
+
+db_write_blob retrieve_image "
+select lob
     from postcard_images
-    where card_image_id = $image_id
+    where card_image_id = :image_id
 "
 
 

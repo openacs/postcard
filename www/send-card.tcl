@@ -7,6 +7,7 @@ ad_page_contract {
   @creation-date 2000-10-23
   @cvs-id $Id$
 } {
+  card_id:integer,notnull
   image_id:integer,notnull
   sender:notnull
   recipient:notnull
@@ -18,18 +19,25 @@ ad_page_contract {
   url:onevalue
 }
 
-set card_id [db_nextval postcard_seq]
+ad_require_permission [ad_conn package_id] "postcard_create_card"
 
 set pickup_code [ns_crypt $card_id foobar]
 
-db_dml add_message {
-    insert into postcards (card_id, pickup_code, card_picture, recipient, sender, message)
-    values (:card_id, :pickup_code, :image_id, :recipient, :sender, :message)
+db_transaction {
+
+    db_dml add_message {
+	insert into postcards (card_id, pickup_code, card_picture, recipient, sender, message)
+	values (:card_id, :pickup_code, :image_id, :recipient, :sender, :message)
+    }
+
+    db_0or1row select_card_id {
+	select max(card_id) as card_id from postcards
+    }
+
+} on_error { # most likely a double click
+    ad_returnredirect "."
 }
 
-db_0or1row select_card_id {
-    select max(card_id) as card_id from postcards
-}
 
 set url "[util_current_location][ad_conn package_url]show-card?pickup_code=$pickup_code"
 
@@ -49,4 +57,6 @@ You may go to $url to pick up your card!
 
 "
 ns_sendmail $recipient $sender $subject $message
+
+
 
