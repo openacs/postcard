@@ -10,7 +10,8 @@ ad_page_contract {
 
 apm_load_xml_packages
 
-set xml_data [ns_httpget "http://kiki7/postcard/dump-cards"]
+set reply [ns_http run "http://kiki7/postcard/dump-cards"]
+set xml_data [dict get $reply body]
 
 set tree [dom::DOMImplementation parse $xml_data]
 #set doc [dom::node cget $tree -firstChild]
