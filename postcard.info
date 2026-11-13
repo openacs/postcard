@@ -7,15 +7,15 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="1.0" url="http://openacs.org/repository/download/apm/postcard-1.0.apm">
+    <version name="1.0.1" url="http://openacs.org/repository/download/apm/postcard-1.0.1.apm">
         <owner url="mailto:jade@rubick.com">Jade Rubick</owner>
         <owner url="mailto:hqm@ai.mit.edu">Henry Minsky</owner>
         <owner url="mailto:k_vertigo@yahoo.com">kapil thangavelu</owner>
         <summary>Send electronics postcards</summary>
-        <release-date>2004-10-07</release-date>
+        <release-date>2026-11-13</release-date>
         <description format="text/html">Allows users to send postcards (images w/ text). It is an adaptation of Henry Minsky's postcard tutorial application.</description>
 
-        <provides url="postcard" version="1.0"/>
+        <provides url="postcard" version="1.0.1"/>
         <requires url="acs-mail-lite" version="0.2a"/>
 
         <callbacks>
